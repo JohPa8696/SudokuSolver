@@ -1,2 +1,2 @@
 # SudokuSolver
-#Implementing sudokuy solver using backtracking algorithms
+#Implementing a sudoku solver using backtracking algorithms
