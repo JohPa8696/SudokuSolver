@@ -5,10 +5,16 @@ import java.util.Scanner;
 public class InputProcessor {
 	private int[][] board= new int[9][9];
 	private String fileName;
+	
+	
 	public InputProcessor(String name){
 		this.fileName=name;
 	}
 	
+	/**
+	 * Scan input
+	 * @throws FileNotFoundException
+	 */
 	public void processInput() throws FileNotFoundException{
 		Scanner scan= new Scanner(new File(fileName));
 		int i=0;
@@ -27,8 +33,12 @@ public class InputProcessor {
 				i++;
 			}
 		}
+		scan.close();
 	}
 	
+	  public int[][] getBoard(){
+	        return this.board;
+	    }
 	
 }
 
