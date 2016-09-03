@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ public class GUI extends JFrame implements ActionListener{
 	private JButton loadInput;
 	private JButton solve;
 	
+	private int[][] board;
 	
 	/**
 	 * Create the application.
@@ -39,12 +39,15 @@ public class GUI extends JFrame implements ActionListener{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("Sudoku Solver");
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
-		frame.setBounds(100, 100, 537, 630);
+		frame.setBounds(700, 150, 527, 620);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 255));
 		panel.setBounds(0, 0, 520, 530);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -104,8 +107,10 @@ public class GUI extends JFrame implements ActionListener{
 			fileChooser();
 		}else if(e.getSource()== solve){
 			
-			
+			SudokuSolver solver= new SudokuSolver(list);
+			solver.solve(board);
 			/*CALL THE ALGORITHM*/
+			// initiate a dialoug box : SOLVED!
 		}
 		
 	}
@@ -129,7 +134,8 @@ public class GUI extends JFrame implements ActionListener{
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-				populateBoard(ip.getBoard());
+				board= ip.getBoard();
+				populateBoard(board);
 			}else{
 			}
 			chooser = null;

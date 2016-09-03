@@ -26,7 +26,6 @@ public class InputProcessor {
 			}else{
 				line=line.replace("|", "");
 				line=line.replace(" ", "");
-				System.out.println(line);
 				for(int j=0; j<9; ++j){
 					board[i][j]=Character.getNumericValue(line.charAt(j));
 				}
@@ -39,6 +38,7 @@ public class InputProcessor {
 	  public int[][] getBoard(){
 	        return this.board;
 	    }
+
 	
 }
 
